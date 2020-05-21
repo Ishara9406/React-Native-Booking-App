@@ -10,7 +10,7 @@ const { width } = Dimensions.get("screen");
 
 class NewReservation extends React.Component {
 
-   // BBR
+
 
   render= () => {
     return (
