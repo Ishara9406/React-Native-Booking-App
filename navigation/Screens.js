@@ -74,7 +74,7 @@ function ArticlesStack(props) {
         component={Articles}
         options={{
           header: ({ navigation, scene }) => (
-            <Header title="Articles" navigation={navigation} scene={scene} />
+            <Header title="Slot Reservation" navigation={navigation} scene={scene} />
           ),
           cardStyle: { backgroundColor: "#F8F9FE" }
         }}
@@ -229,7 +229,7 @@ function SlotInformationStack(props) {
         options={{
           header: ({ navigation, scene }) => (
             <Header
-              title=""
+              title="Slot Reservation"
               search
               options
               navigation={navigation}
@@ -269,7 +269,7 @@ function ViewResStack(props) {
         options={{
           header: ({ navigation, scene }) => (
             <Header
-              title=""
+              title="View Reservation"
               search
               options
               navigation={navigation}

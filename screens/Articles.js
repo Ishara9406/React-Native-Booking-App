@@ -1,253 +1,261 @@
 import React from "react";
-import {
-  ScrollView,
-  StyleSheet,
-  Image,
-  TouchableWithoutFeedback,
-  ImageBackground,
-  Dimensions
-} from "react-native";
-//galio
-import { Block, Text, theme } from "galio-framework";
-//argon
-import { articles, Images, argonTheme } from "../constants/";
-import { Card } from "../components/";
-
-const { width } = Dimensions.get("screen");
-
-const thumbMeasure = (width - 48 - 32) / 3;
-const cardWidth = width - theme.SIZES.BASE * 2;
-const categories = [
-  {
-    title: "Music Album",
-    description:
-      "Rock music is a genre of popular music. It developed during and after the 1960s in the United Kingdom.",
-    image:
-      "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?fit=crop&w=840&q=80",
-    price: "$125"
-  },
-  {
-    title: "Events",
-    description:
-      "Rock music is a genre of popular music. It developed during and after the 1960s in the United Kingdom.",
-    image:
-      "https://images.unsplash.com/photo-1543747579-795b9c2c3ada?fit=crop&w=840&q=80",
-    price: "$35"
-  }
-];
+import { ScrollView, StyleSheet, Dimensions, TouchableOpacity,View,TextInput,Alert,ImageBackground,StatusBar,
+  KeyboardAvoidingView } from "react-native";
+// Galio components
+import { Block, Checkbox, Text, theme } from "galio-framework";
+// Argon themed components
+import { argonTheme, tabs } from "../constants/";
+import { Button, Select, Icon, Input, Header, Switch } from "../components/";
+//
+import { HeaderHeight } from "../constants/utils";
+//
+const { width,height } = Dimensions.get("screen");
 
 class Articles extends React.Component {
-  renderProduct = (item, index) => {
-    const { navigation } = this.props;
+
+  render= () => {
 
     return (
-      <TouchableWithoutFeedback
-        style={{ zIndex: 3 }}
-        key={`product-${item.title}`}
-        onPress={() => navigation.navigate("Pro", { product: item })}
-      >
-        <Block center style={styles.productItem}>
-          <Image
-            resizeMode="cover"
-            style={styles.productImage}
-            source={{ uri: item.image }}
-          />
-          <Block center style={{ paddingHorizontal: theme.SIZES.BASE }}>
-            <Text
-              center
-              size={16}
-              color={theme.COLORS.MUTED}
-              style={styles.productPrice}
-            >
-              {item.price}
-            </Text>
-            <Text center size={34}>
-              {item.title}
-            </Text>
-            <Text
-              center
-              size={16}
-              color={theme.COLORS.MUTED}
-              style={styles.productDescription}
-            >
-              {item.description}
-            </Text>
-          </Block>
-        </Block>
-      </TouchableWithoutFeedback>
-    );
-  };
-
-  renderCards = () => {
-    return (
-      <Block flex style={styles.group}>
-        <Text bold size={16} style={styles.title}>
-          Cards
-        </Text>
-        <Block flex>
-          <Block style={{ paddingHorizontal: theme.SIZES.BASE }}>
-            <Card item={articles[0]} horizontal />
-            <Block flex row>
-              <Card
-                item={articles[1]}
-                style={{ marginRight: theme.SIZES.BASE }}
-              />
-              <Card item={articles[2]} />
-            </Block>
-            <Card item={articles[4]} full />
-            <Block flex card shadow style={styles.category}>
-              <ImageBackground
-                source={{ uri: Images.Products["View article"] }}
-                style={[
-                  styles.imageBlock,
-                  { width: width - theme.SIZES.BASE * 2, height: 252 }
-                ]}
-                imageStyle={{
-                  width: width - theme.SIZES.BASE * 2,
-                  height: 252
-                }}
-              >
-                <Block style={styles.categoryTitle}>
-                  <Text size={18} bold color={theme.COLORS.WHITE}>
-                    View article
+      <View style ={styles.container}>
+     
+      <Text bold size={25} style={styles.title1}>
+       Reserve your SLOT
+      </Text>
+      <Block flex>
+                {/* <Block flex={0.17} middle>
+                  <Text color="#8898AA" size={12}>
+                    Or sign up the classic way
                   </Text>
-                </Block>
-              </ImageBackground>
+                </Block> */}
+                <Block flex center>
+                  <KeyboardAvoidingView
+                    style={{ flex: 1 }}
+                    behavior="padding"
+                    enabled
+                  >
+                    <Block width={width * 0.8} style={{ marginBottom: 15 }}>
+                      <Input
+                        borderless
+                        placeholder="Slot ID"
+                        iconContent={
+                          <Icon
+                            size={16}
+                            color={argonTheme.COLORS.ICON}
+                            name="diamond"
+                            family="ArgonExtra"
+                            style={styles.inputIcons}
+                          />
+                        }
+                      />
+                    </Block>
+                    <Block width={width * 0.8} style={{ marginBottom: 15 }}>
+                      <Input
+                        borderless
+                        placeholder="Slot No"
+                        iconContent={
+                          <Icon
+                            size={16}
+                            color={argonTheme.COLORS.ICON}
+                            name="hat-3"
+                            family="ArgonExtra"
+                            style={styles.inputIcons}
+                          />
+                        }
+                      />
+                    </Block>
+                      <Block width={width * 0.8} style={{ marginBottom: 15 }}>
+                      <Input
+                        borderless
+                        placeholder="Name"
+                        iconContent={
+                          <Icon
+                            size={16}
+                            color={argonTheme.COLORS.ICON}
+                            name="hat-3"
+                            family="ArgonExtra"
+                            style={styles.inputIcons}
+                          />
+                        }
+                      />
+                    </Block>
+                    <Block width={width * 0.8} style={{ marginBottom: 15 }}>
+                      <Input
+                        borderless
+                        placeholder="NIC"
+                        iconContent={
+                          <Icon
+                            size={16}
+                            color={argonTheme.COLORS.ICON}
+                            name="ic_mail_24px"
+                            family="ArgonExtra"
+                            style={styles.inputIcons}
+                          />
+                        }
+                      />
+                    </Block>
+                    <Block width={width * 0.8} style={{ marginBottom: 15 }}>
+                      <Input
+                        borderless
+                        placeholder="Email"
+                        iconContent={
+                          <Icon
+                            size={16}
+                            color={argonTheme.COLORS.ICON}
+                            name="ic_mail_24px"
+                            family="ArgonExtra"
+                            style={styles.inputIcons}
+                          />
+                        }
+                      />
+                    </Block>
+                    <Block width={width * 0.8} style={{ marginBottom: 15 }}>
+                      <Input
+                        borderless
+                        placeholder="Rental"
+                        iconContent={
+                          <Icon
+                            size={16}
+                            color={argonTheme.COLORS.ICON}
+                            name="ic_mail_24px"
+                            family="ArgonExtra"
+                            style={styles.inputIcons}
+                          />
+                        }
+                      />
+                    </Block>
+                    {/* <Block width={width * 0.8}>
+                      <Input
+                        password
+                        borderless
+                        placeholder="Password"
+                        iconContent={
+                          <Icon
+                            size={16}
+                            color={argonTheme.COLORS.ICON}
+                            name="padlock-unlocked"
+                            family="ArgonExtra"
+                            style={styles.inputIcons}
+                          />
+                        }
+                      />
+                      <Block row style={styles.passwordCheck}>
+                        <Text size={12} color={argonTheme.COLORS.MUTED}>
+                          password strength:
+                        </Text>
+                        <Text bold size={12} color={argonTheme.COLORS.SUCCESS}>
+                          {" "}
+                          strong
+                        </Text>
+                      </Block>
+                    </Block> */}
+                    {/* <Block row width={width * 0.75}>
+                      <Checkbox
+                        checkboxStyle={{
+                          borderWidth: 3
+                        }}
+                        color={argonTheme.COLORS.PRIMARY}
+                        label="I agree with the"
+                      />
+                      <Button
+                        style={{ width: 100 }}
+                        color="transparent"
+                        textStyle={{
+                          color: argonTheme.COLORS.PRIMARY,
+                          fontSize: 14
+                        }}
+                      >
+                        Privacy Policy
+                      </Button>
+                    </Block> */}
+                    <Block flex={1.25} right>
+              <Button center color="default" style={styles.optionsButton}>
+                Reserve
+              </Button>
             </Block>
-          </Block>
-          <Block flex style={{ marginTop: theme.SIZES.BASE / 2 }}>
-            <ScrollView
-              horizontal={true}
-              pagingEnabled={true}
-              decelerationRate={0}
-              scrollEventThrottle={16}
-              snapToAlignment="center"
-              showsHorizontalScrollIndicator={false}
-              snapToInterval={cardWidth + theme.SIZES.BASE * 0.375}
-              contentContainerStyle={{
-                paddingHorizontal: theme.SIZES.BASE / 2
-              }}
-            >
-              {categories &&
-                categories.map((item, index) =>
-                  this.renderProduct(item, index)
-                )}
-            </ScrollView>
-          </Block>
-        </Block>
-      </Block>
-    );
-  };
-
-  renderAlbum = () => {
-    const { navigation } = this.props;
-
-    return (
-      <Block
-        flex
-        style={[styles.group, { paddingBottom: theme.SIZES.BASE * 5 }]}
-      >
-        <Text bold size={16} style={styles.title}>
-          Album
-        </Text>
-        <Block style={{ marginHorizontal: theme.SIZES.BASE * 2 }}>
-          <Block flex right>
-            <Text
-              size={12}
-              color={theme.COLORS.PRIMARY}
-              onPress={() => navigation.navigate("Home")}
-            >
-              View All
-            </Text>
-          </Block>
-          <Block
-            row
-            space="between"
-            style={{ marginTop: theme.SIZES.BASE, flexWrap: "wrap" }}
-          >
-            {Images.Viewed.map((img, index) => (
-              <Block key={`viewed-${img}`} style={styles.shadow}>
-                <Image
-                  resizeMode="cover"
-                  source={{ uri: img }}
-                  style={styles.albumThumb}
-                />
+                    
+                  </KeyboardAvoidingView>
+                </Block>
               </Block>
-            ))}
-          </Block>
-        </Block>
-      </Block>
+   </View>
     );
   };
 
-  render() {
-    return (
-      <Block flex center>
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-        >
-          {this.renderCards()}
-          {this.renderAlbum()}
-        </ScrollView>
-      </Block>
-    );
-  }
 }
 
 const styles = StyleSheet.create({
-  title: {
-    paddingBottom: theme.SIZES.BASE,
-    paddingHorizontal: theme.SIZES.BASE * 2,
-    marginTop: 22,
-    color: argonTheme.COLORS.HEADER
+   
+
+   container: {
+      flex: 1,
+     
   },
-  group: {
-    paddingTop: theme.SIZES.BASE
+
+//
+title1: {
+    textAlign: 'center',
+    marginVertical: 30,
+ },
+ registerContainer: {
+  width: width * 0.9,
+  height: height * 0.78,
+  backgroundColor: "#F4F5F7",
+  borderRadius: 4,
+  shadowColor: argonTheme.COLORS.BLACK,
+  shadowOffset: {
+    width: 0,
+    height: 4
   },
-  albumThumb: {
-    borderRadius: 4,
-    marginVertical: 4,
-    alignSelf: "center",
-    width: thumbMeasure,
-    height: thumbMeasure
+  shadowRadius: 8,
+  shadowOpacity: 0.1,
+  elevation: 1,
+  overflow: "hidden"
+},
+socialConnect: {
+  backgroundColor: argonTheme.COLORS.WHITE,
+  borderBottomWidth: StyleSheet.hairlineWidth,
+  borderColor: "#8898AA"
+},
+socialButtons: {
+  width: 120,
+  height: 40,
+  backgroundColor: "#fff",
+  shadowColor: argonTheme.COLORS.BLACK,
+  shadowOffset: {
+    width: 0,
+    height: 4
   },
-  category: {
-    backgroundColor: theme.COLORS.WHITE,
-    marginVertical: theme.SIZES.BASE / 2,
-    borderWidth: 0
-  },
-  categoryTitle: {
-    height: "100%",
-    paddingHorizontal: theme.SIZES.BASE,
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  imageBlock: {
-    overflow: "hidden",
-    borderRadius: 4
-  },
-  productItem: {
-    width: cardWidth - theme.SIZES.BASE * 2,
-    marginHorizontal: theme.SIZES.BASE,
-    shadowColor: "black",
-    shadowOffset: { width: 0, height: 7 },
-    shadowRadius: 10,
-    shadowOpacity: 0.2
-  },
-  productImage: {
-    width: cardWidth - theme.SIZES.BASE,
-    height: cardWidth - theme.SIZES.BASE,
-    borderRadius: 3
-  },
-  productPrice: {
-    paddingTop: theme.SIZES.BASE,
-    paddingBottom: theme.SIZES.BASE / 2
-  },
-  productDescription: {
-    paddingTop: theme.SIZES.BASE
-    // paddingBottom: theme.SIZES.BASE * 2,
-  }
+  shadowRadius: 8,
+  shadowOpacity: 0.1,
+  elevation: 1
+},
+socialTextButtons: {
+  color: argonTheme.COLORS.PRIMARY,
+  fontWeight: "800",
+  fontSize: 14
+},
+inputIcons: {
+  marginRight: 12
+},
+passwordCheck: {
+  paddingLeft: 15,
+  paddingTop: 13,
+  paddingBottom: 30
+},
+createButton: {
+  width: width * 0.5,
+  marginTop: 25
+},
+profile: {
+  marginTop: Platform.OS === "android" ? -HeaderHeight : 0,
+  // marginBottom: -HeaderHeight * 2,
+  flex: 1
+},
+optionsButton: {
+  width: "auto",
+  height: 30,
+  paddingHorizontal: theme.SIZES.BASE,
+  paddingVertical: 10
+}
 });
 
 export default Articles;

@@ -1,12 +1,15 @@
 import React from "react";
-import { ScrollView, StyleSheet, Dimensions, TouchableOpacity,View,TextInput,Alert, } from "react-native";
+import { ScrollView, StyleSheet, Dimensions, TouchableOpacity,View,TextInput,Alert,ImageBackground,StatusBar,
+  KeyboardAvoidingView } from "react-native";
 // Galio components
-import { Block, Text, Button as GaButton, theme } from "galio-framework";
+import { Block, Checkbox, Text, theme } from "galio-framework";
 // Argon themed components
 import { argonTheme, tabs } from "../constants/";
 import { Button, Select, Icon, Input, Header, Switch } from "../components/";
-
-const { width } = Dimensions.get("screen");
+//
+import { HeaderHeight } from "../constants/utils";
+//
+const { width,height } = Dimensions.get("screen");
 
 class SlotInformation extends React.Component {
 
@@ -16,49 +19,163 @@ class SlotInformation extends React.Component {
       <View style ={styles.container}>
      
       <Text bold size={25} style={styles.title1}>
-        Slot Information
+       Reserve your SLOT
       </Text>
-
-      <Text bold size={18}>
-          Slot No:
-      </Text>
-      <View style={styles.row}>
-      <Text bold size={18} style={styles.line} >
-          User Name:
-      </Text>
-      <TextInput  style={styles.input}
-        placeholder='e.g'
-       />
-      </View>
-      
-      <View style={styles.row}>
-      <Text bold size={18} style={styles.line1} >
-          User NIC:
-      </Text>
-      <TextInput  style={styles.input1}
-       />
-   </View>
-
-   <View style={styles.row}>
-      <Text bold size={18} style={styles.line2} >
-          Email:
-      </Text>
-      <TextInput  style={styles.input2}
-       />
-   </View>
-
-   <View style={styles.row}>
-      <Text bold size={18} style={styles.line3} >
-          Contact No:
-      </Text>
-      <TextInput  style={styles.input3}
-       />
-   </View>
-   <View style={styles.buttonContainer}>
-   <Button  onPress={() => Alert.alert('Reservation will verified via email !')} style={styles.ButtonStyle} >
-          Confirm
-          </Button>
-   </View>
+      <Block flex>
+                {/* <Block flex={0.17} middle>
+                  <Text color="#8898AA" size={12}>
+                    Or sign up the classic way
+                  </Text>
+                </Block> */}
+                <Block flex center>
+                  <KeyboardAvoidingView
+                    style={{ flex: 1 }}
+                    behavior="padding"
+                    enabled
+                  >
+                    <Block width={width * 0.8} style={{ marginBottom: 15 }}>
+                      <Input
+                        borderless
+                        placeholder="Slot ID"
+                        iconContent={
+                          <Icon
+                            size={16}
+                            color={argonTheme.COLORS.ICON}
+                            name="diamond"
+                            family="ArgonExtra"
+                            style={styles.inputIcons}
+                          />
+                        }
+                      />
+                    </Block>
+                    <Block width={width * 0.8} style={{ marginBottom: 15 }}>
+                      <Input
+                        borderless
+                        placeholder="Slot No"
+                        iconContent={
+                          <Icon
+                            size={16}
+                            color={argonTheme.COLORS.ICON}
+                            name="hat-3"
+                            family="ArgonExtra"
+                            style={styles.inputIcons}
+                          />
+                        }
+                      />
+                    </Block>
+                      <Block width={width * 0.8} style={{ marginBottom: 15 }}>
+                      <Input
+                        borderless
+                        placeholder="Name"
+                        iconContent={
+                          <Icon
+                            size={16}
+                            color={argonTheme.COLORS.ICON}
+                            name="hat-3"
+                            family="ArgonExtra"
+                            style={styles.inputIcons}
+                          />
+                        }
+                      />
+                    </Block>
+                    <Block width={width * 0.8} style={{ marginBottom: 15 }}>
+                      <Input
+                        borderless
+                        placeholder="NIC"
+                        iconContent={
+                          <Icon
+                            size={16}
+                            color={argonTheme.COLORS.ICON}
+                            name="ic_mail_24px"
+                            family="ArgonExtra"
+                            style={styles.inputIcons}
+                          />
+                        }
+                      />
+                    </Block>
+                    <Block width={width * 0.8} style={{ marginBottom: 15 }}>
+                      <Input
+                        borderless
+                        placeholder="Email"
+                        iconContent={
+                          <Icon
+                            size={16}
+                            color={argonTheme.COLORS.ICON}
+                            name="ic_mail_24px"
+                            family="ArgonExtra"
+                            style={styles.inputIcons}
+                          />
+                        }
+                      />
+                    </Block>
+                    <Block width={width * 0.8} style={{ marginBottom: 15 }}>
+                      <Input
+                        borderless
+                        placeholder="Rental"
+                        iconContent={
+                          <Icon
+                            size={16}
+                            color={argonTheme.COLORS.ICON}
+                            name="ic_mail_24px"
+                            family="ArgonExtra"
+                            style={styles.inputIcons}
+                          />
+                        }
+                      />
+                    </Block>
+                    {/* <Block width={width * 0.8}>
+                      <Input
+                        password
+                        borderless
+                        placeholder="Password"
+                        iconContent={
+                          <Icon
+                            size={16}
+                            color={argonTheme.COLORS.ICON}
+                            name="padlock-unlocked"
+                            family="ArgonExtra"
+                            style={styles.inputIcons}
+                          />
+                        }
+                      />
+                      <Block row style={styles.passwordCheck}>
+                        <Text size={12} color={argonTheme.COLORS.MUTED}>
+                          password strength:
+                        </Text>
+                        <Text bold size={12} color={argonTheme.COLORS.SUCCESS}>
+                          {" "}
+                          strong
+                        </Text>
+                      </Block>
+                    </Block> */}
+                    {/* <Block row width={width * 0.75}>
+                      <Checkbox
+                        checkboxStyle={{
+                          borderWidth: 3
+                        }}
+                        color={argonTheme.COLORS.PRIMARY}
+                        label="I agree with the"
+                      />
+                      <Button
+                        style={{ width: 100 }}
+                        color="transparent"
+                        textStyle={{
+                          color: argonTheme.COLORS.PRIMARY,
+                          fontSize: 14
+                        }}
+                      >
+                        Privacy Policy
+                      </Button>
+                    </Block> */}
+                    <Block flex={1.25} right>
+              <Button center color="default" style={styles.optionsButton}>
+                Reserve
+              </Button>
+            </Block>
+                    
+                  </KeyboardAvoidingView>
+                </Block>
+              </Block>
    </View>
     );
   };
@@ -73,80 +190,71 @@ const styles = StyleSheet.create({
      
   },
 
-
+//
 title1: {
     textAlign: 'center',
     marginVertical: 30,
  },
-
-input:{
-  padding:6,
-  height:30,
-  margin:18,
-  width:200,
-  borderBottomColor: '#000000',
-  borderBottomWidth: 1,
- 
+ registerContainer: {
+  width: width * 0.9,
+  height: height * 0.78,
+  backgroundColor: "#F4F5F7",
+  borderRadius: 4,
+  shadowColor: argonTheme.COLORS.BLACK,
+  shadowOffset: {
+    width: 0,
+    height: 4
+  },
+  shadowRadius: 8,
+  shadowOpacity: 0.1,
+  elevation: 1,
+  overflow: "hidden"
 },
-input1:{
-  padding:6,
-  height:30,
-  margin:2,
-  width:200,
-  borderBottomColor: '#000000',
-  borderBottomWidth: 1,
- 
+socialConnect: {
+  backgroundColor: argonTheme.COLORS.WHITE,
+  borderBottomWidth: StyleSheet.hairlineWidth,
+  borderColor: "#8898AA"
 },
-
-input2:{
-  padding:6,
-  height:30,
-  margin:20,
-  width:200,
-  borderBottomColor: '#000000',
-  borderBottomWidth: 1,
- 
+socialButtons: {
+  width: 120,
+  height: 40,
+  backgroundColor: "#fff",
+  shadowColor: argonTheme.COLORS.BLACK,
+  shadowOffset: {
+    width: 0,
+    height: 4
+  },
+  shadowRadius: 8,
+  shadowOpacity: 0.1,
+  elevation: 1
 },
-
-input3:{
-  padding:6,
-  height:30,
-  margin:10,
-  width:200,
-  borderBottomColor: '#000000',
-  borderBottomWidth: 1,
- 
+socialTextButtons: {
+  color: argonTheme.COLORS.PRIMARY,
+  fontWeight: "800",
+  fontSize: 14
 },
-row: {
-
-  flexDirection: "row"
+inputIcons: {
+  marginRight: 12
 },
-
-line:{
-  lineHeight: 70,
+passwordCheck: {
+  paddingLeft: 15,
+  paddingTop: 13,
+  paddingBottom: 30
 },
-
-line1:{
-  lineHeight: 30,
+createButton: {
+  width: width * 0.5,
+  marginTop: 25
 },
-
-line2:{
-  lineHeight: 80,
+profile: {
+  marginTop: Platform.OS === "android" ? -HeaderHeight : 0,
+  // marginBottom: -HeaderHeight * 2,
+  flex: 1
 },
-
-line3:{
-  lineHeight: 50,
-},
-
-buttonContainer: {
-  alignItems: 'center',
-    
-  marginVertical: 100,
-},
-ButtonStyle : {
-  backgroundColor: '#7a42f4',
-  height: "30%",
-  width:"30%" 
+optionsButton: {
+  width: "auto",
+  height: 30,
+  paddingHorizontal: theme.SIZES.BASE,
+  paddingVertical: 10
 }
 });
 

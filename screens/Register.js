@@ -10,6 +10,7 @@ import { Block, Checkbox, Text, theme } from "galio-framework";
 
 import { Button, Icon, Input } from "../components";
 import { Images, argonTheme } from "../constants";
+import { HeaderHeight } from "../constants/utils";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -68,6 +69,36 @@ class Register extends React.Component {
                     enabled
                   >
                     <Block width={width * 0.8} style={{ marginBottom: 15 }}>
+                      <Input
+                        borderless
+                        placeholder="Name"
+                        iconContent={
+                          <Icon
+                            size={16}
+                            color={argonTheme.COLORS.ICON}
+                            name="menu-8"
+                            family="ArgonExtra"
+                            style={styles.inputIcons}
+                          />
+                        }
+                      />
+                    </Block>
+                    <Block width={width * 0.8} style={{ marginBottom: 15 }}>
+                      <Input
+                        borderless
+                        placeholder="Name"
+                        iconContent={
+                          <Icon
+                            size={16}
+                            color={argonTheme.COLORS.ICON}
+                            name="hat-3"
+                            family="ArgonExtra"
+                            style={styles.inputIcons}
+                          />
+                        }
+                      />
+                    </Block>
+                                        <Block width={width * 0.8} style={{ marginBottom: 15 }}>
                       <Input
                         borderless
                         placeholder="Name"
@@ -160,6 +191,7 @@ class Register extends React.Component {
 }
 
 const styles = StyleSheet.create({
+
   registerContainer: {
     width: width * 0.9,
     height: height * 0.78,
@@ -209,6 +241,11 @@ const styles = StyleSheet.create({
   createButton: {
     width: width * 0.5,
     marginTop: 25
+  },
+  profile: {
+    marginTop: Platform.OS === "android" ? -HeaderHeight : 0,
+    // marginBottom: -HeaderHeight * 2,
+    flex: 1
   }
 });
 

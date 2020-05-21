@@ -32,12 +32,12 @@ class Profile extends React.Component {
               style={{ width, marginTop: '25%' }}
             >
               <Block flex style={styles.profileCard}>
-                <Block middle style={styles.avatarContainer}>
+                {/* <Block middle style={styles.avatarContainer}>
                   <Image
                     source={{ uri: Images.ProfilePicture }}
                     style={styles.avatar}
                   />
-                </Block>
+                </Block> */}
                 <Block style={styles.info}>
                   <Block
                     middle
@@ -126,15 +126,15 @@ class Profile extends React.Component {
                       Show more
                     </Button>
                   </Block>
-                  <Block
+                  {/* <Block
                     row
                     style={{ paddingVertical: 14, alignItems: "baseline" }}
                   >
                     <Text bold size={16} color="#525F7F">
                       Album
                     </Text>
-                  </Block>
-                  <Block
+                  </Block> */}
+                  {/* <Block
                     row
                     style={{ paddingBottom: 20, justifyContent: "flex-end" }}
                   >
@@ -157,7 +157,7 @@ class Profile extends React.Component {
                         />
                       ))}
                     </Block>
-                  </Block>
+                  </Block> */}
                 </Block>
               </Block>
             </ScrollView>
