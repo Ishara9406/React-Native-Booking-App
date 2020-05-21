@@ -27,26 +27,26 @@ class Onboarding extends React.Component {
           />
         </Block>
         <Block center>
-          <Image source={Images.LogoOnboarding} style={styles.logo} />
+          {/* <Image source={Images.LogoOnboarding} style={styles.logo} /> */}
         </Block>
         <Block flex space="between" style={styles.padded}>
             <Block flex space="around" style={{ zIndex: 2 }}>
               <Block style={styles.title}>
                 <Block>
                   <Text color="white" size={60}>
-                    Design
+                    iParking
                   </Text>
                 </Block>
-                <Block>
+                {/* <Block>
                   <Text color="white" size={60}>
                     System
                   </Text>
-                </Block>
-                <Block style={styles.subTitle}>
+                </Block> */}
+                {/* <Block style={styles.subTitle}>
                   <Text color="white" size={16}>
                     Fully coded React Native components.
                   </Text>
-                </Block>
+                </Block> */}
               </Block>
               <Block center>
                 <Button
@@ -55,7 +55,7 @@ class Onboarding extends React.Component {
                   onPress={() => navigation.navigate("App")}
                   textStyle={{ color: argonTheme.COLORS.BLACK }}
                 >
-                  Get Started
+                Getting Started
                 </Button>
               </Block>
           </Block>
@@ -86,10 +86,11 @@ const styles = StyleSheet.create({
     height: 60,
     zIndex: 2,
     position: 'relative',
-    marginTop: '-50%'
+    marginTop: '-100%'
   },
   title: {
-    marginTop:'-5%'
+    marginTop:'-70%',
+    
   },
   subTitle: {
     marginTop: 20

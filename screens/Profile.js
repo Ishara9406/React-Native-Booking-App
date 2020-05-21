@@ -189,7 +189,6 @@ class Profile extends React.Component {
                 MESSAGE
               </Button>
             </Block>
-
             <Block row space="between">
               <Block middle>
                 <Text

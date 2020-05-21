@@ -4,13 +4,25 @@ import { AppLoading } from "expo";
 import { Asset } from "expo-asset";
 import { Block, GalioProvider } from "galio-framework";
 import { NavigationContainer } from "@react-navigation/native";
+import { StackNavigator } from "react-navigation";
 
 // Before rendering any navigation stack
 import { enableScreens } from "react-native-screens";
 enableScreens();
 
+// import Home from './screens/Home';
+// import Pro from './screens/Pro';
 import Screens from "./navigation/Screens";
 import { Images, articles, argonTheme } from "./constants";
+
+// const Navigation = StackNavigator({
+//   Home:{
+//     screen: Home,
+//   },
+//   profile:{
+//     screen: Pro,
+//   }
+// })
 
 // cache app images
 const assetImages = [
